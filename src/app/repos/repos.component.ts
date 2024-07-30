@@ -25,9 +25,9 @@ export class ReposComponent implements OnChanges {
 
   constructor(private githubService: GithubService) {}
 
-  // redirectToRepo(repourl: string) {
-  //   window.open(repourl);
-  // }
+  redirectToRepo(repourl: string) {
+    window.open(repourl);
+  }
 
   getUserRepos(userName: string, page: number = 1, perPage: number = 20) {
     this.isLoading = true; 

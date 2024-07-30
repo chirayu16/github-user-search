@@ -7,6 +7,7 @@ import { GithubService } from '../github.service';
 import { CommonModule } from '@angular/common';
 import { finalize } from 'rxjs';
 import { LoadingComponent } from '../loading/loading.component';
+
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -30,15 +31,15 @@ export class HomeComponent {
   constructor(private githubService: GithubService) {}
 
   getUserDetails(userName: string) {
-    if (!!userName) {
-      this.isLoading = true;
+    if (!!userName) {       
+      this.isLoading = true; //sets loading state to true before starting API call
       this.githubService
-        .searchUser(userName)
+        .searchUser(userName)  //calls the service method to fetch user details
         .pipe(
-          finalize(() => {
+          finalize(() => {    //uses finalize to ensure isLoading is set to false after the API call completes
             this.isLoading = false;
           })
-        ).subscribe((response)=> {
+        ).subscribe((response)=> {  //processes the response from API, updating user property with user's details 
       this.user = {
         userName:response.login,
         name:response.name,
@@ -50,8 +51,8 @@ export class HomeComponent {
   }
 }
 
-    onSearch(username:string) {
+    onSearch(username:string) {  //fn handles the search action triggered by the user
       this.getUserDetails(username);
-      this.searchQuery = username;
+      this.searchQuery = username; 
     }
 }

@@ -1,5 +1,5 @@
 <div *ngIf="repos.length > 0 && !isLoading" class="repos-block">
-  <h3>Repositories</h3>
+  <!-- <span class="ml-4 font-weight-medium repo-header">Repositories</span> -->
   <div class="repo-cards-container">
     <div class="repo-card" *ngFor="let repo of repos">
       <mat-card class="example-card">
@@ -32,4 +32,6 @@
     </button>
   </div>
 </div>
-<app-loading *ngIf="isLoading"></app-loading>
+<div class="loader">
+  <app-loading *ngIf="isLoading"></app-loading>
+</div>

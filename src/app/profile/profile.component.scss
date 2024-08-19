@@ -1,10 +1,23 @@
 .user-details {
   text-align: center;
   margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  flex-direction: column;
 }
 
 .user-details img {
   border-radius: 50%;
   width: 150px;
   height: 150px;
+}
+
+.user-name {
+  font-size: 18px;
+}
+
+.followers-block {
+  display: flex;
+  flex-direction: row;
 }

@@ -7,6 +7,7 @@ import { GithubService } from '../github.service';
 import { CommonModule } from '@angular/common';
 import { finalize } from 'rxjs';
 import { LoadingComponent } from '../loading/loading.component';
+import { LogoComponent } from '../logo/logo.component';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,8 @@ import { LoadingComponent } from '../loading/loading.component';
     SearchComponent, 
     ProfileComponent, 
     ReposComponent,
-    LoadingComponent
+    LoadingComponent,
+    LogoComponent
   ],
   providers: [GithubService],
   templateUrl: './home.component.html',
@@ -40,19 +42,23 @@ export class HomeComponent {
             this.isLoading = false;
           })
         ).subscribe((response)=> {  //processes the response from API, updating user property with user's details 
-      this.user = {
-        userName:response.login,
-        name:response.name,
-        avatarUrl:response.avatar_url,
-        bio:response.bio,
-        htmlUrl:response.html_url,
-      };
-    });
-  }
-}
-
-    onSearch(username:string) {  //fn handles the search action triggered by the user
-      this.getUserDetails(username);
-      this.searchQuery = username; 
+          console.log('response:', response.followers);
+          this.user = {
+            userName:response.login,
+            name:response.name,
+            avatarUrl:response.avatar_url,
+            bio:response.bio,
+            htmlUrl:response.html_url,
+            followers: response.followers,
+            following: response.following,
+          };
+        }
+      );
     }
+  }
+
+  onSearch(username:string) {  //fn handles the search action triggered by the user
+    this.getUserDetails(username);
+    this.searchQuery = username; 
+  }
 }

@@ -11,4 +11,5 @@ export interface userProfileDetails {
 export interface reposDetails {
     name: string;
     size: number;
+    html_url: string;
 }

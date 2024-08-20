@@ -1,7 +1,7 @@
 <div *ngIf="repos.length > 0 && !isLoading" class="repos-block">
   <!-- <span class="ml-4 font-weight-medium repo-header">Repositories</span> -->
   <div class="repo-cards-container">
-    <div class="repo-card" *ngFor="let repo of repos">
+    <div class="repo-card" *ngFor="let repo of repos" (click)="redirectToRepo(repo.html_url)">
       <mat-card class="example-card">
         <mat-card-header>
           <mat-card-title>{{ repo.name }}</mat-card-title>
@@ -21,7 +21,13 @@
     >
       Previous
     </button>
-    <input type="number" (input)="onPageChange($event)" />
+    <input
+    type="number"
+    [(ngModel)]="pageNumber"
+    (input)="onPageInput()"
+    min="1"
+    placeholder="Page"
+    /> 
     <button
       class="btn-pagination"
       type="button"

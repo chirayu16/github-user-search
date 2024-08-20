@@ -1,0 +1,36 @@
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0 0 24px;
+  }
+  
+  .logo-title { 
+    font-size: 25px;
+    margin:0 0 10px 0;
+  }
+  
+  .logo-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-icon {
+    margin-right: 8px;
+  }
+  
+  .logo-subtitle {
+    font-size: 14px;
+    margin-top: 0px;
+  }
+  
+  .api-link {
+    color: #269930;
+    text-decoration: underline;
+  }
+  
+  .api-link:hover {
+    color: #30bc3c;
+  }
+  

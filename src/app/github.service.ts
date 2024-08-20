@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,7 +11,15 @@ export class GithubService {
   constructor(private http: HttpClient) { }
 
   searchUser(userName: string): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/${userName}`);
+    const headers = new HttpHeaders({
+      'User-Agent': 'github-user-search'
+    });
+
+    const options = {
+      headers: headers
+    };
+
+    return this.http.get<any>(`${this.baseUrl}/${userName}`, options);
   }
 
   getUserRepos(
@@ -23,7 +31,20 @@ export class GithubService {
       page: page,
       per_page: perPage,
     };
-    return this.http.get<any>(`${this.baseUrl}/${username}/repos`, { params });
-}
+  
+    // Add the User-Agent header
+    const headers = new HttpHeaders({
+      'User-Agent': 'github-user-search',
+    });
+  
+    // Pass the headers in the options object
+    const options = {
+      params: params,
+      headers: headers,
+    };
+  
+    return this.http.get<any>(`${this.baseUrl}/${username}/repos`, options);
+  }
+  
 
 }

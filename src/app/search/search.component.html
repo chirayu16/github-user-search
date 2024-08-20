@@ -1,4 +1,6 @@
-<input #usernameInput type="text" placeholder="Enter GitHub username" />
-<button class="search-button" (click)="emitSearch(usernameInput.value)">
-  Search
-</button>
+<div class="container">
+    <input #usernameInput type="text" placeholder="Enter GitHub username" class="input-form" (keydown.enter)="emitSearch(usernameInput.value)"/>
+    <button class="search-button" (click)="emitSearch(usernameInput.value)">
+      Search
+    </button>
+</div>

@@ -3,6 +3,10 @@
   padding: 0 16px;
   cursor: pointer;
 
+  .repo-header {
+    font-size: 18px;
+  }
+
   .repo-cards-container {
     display: flex;
     flex-wrap: wrap;
@@ -36,22 +40,6 @@
     }
   }
 }
-// .pagination {
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-//   justify-content: right;
-//   margin: 24px;
-
-//   .btn-pagination {
-//     border: 1px solid #ababab;
-//     border-radius: 4px;
-//     background-color: white;
-//     margin-left: 24px;
-//     height: 40px;
-//     padding: 4px 12px;
-//   }
-// }
 /* Pagination component styles */
 .pagination {
   display: flex;
@@ -88,4 +76,11 @@ input[type="number"] {
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 120px;
 }

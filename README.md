@@ -2,6 +2,10 @@
 
 This Angular project allows users to search for GitHub profiles by username and view their details, including repositories.
 
+## Demo
+You can view the live app here: [GitHub User Search Live](https://github-user-repo-info.netlify.app/)
+
+
 ## Features
 - Search GitHub users by username
 - View profile details (e.g., avatar, bio)

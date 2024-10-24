@@ -1,27 +1,35 @@
-# GithubUserSearch
+# GitHub User Search
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.7.
+This Angular project allows users to search for GitHub profiles by username and view their details, including repositories.
 
-## Development server
+## Features
+- Search GitHub users by username
+- View profile details (e.g., avatar, bio)
+- Display repositories with key information
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Technologies
+- **Angular**: Frontend framework
+- **GitHub API**: Fetch user data
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/chirayu16/github-user-search.git
+   cd github-user-search
+2. Install dependencies:
+    npm install
+3. Run the development server:
+    ng serve
+    Navigate to http://localhost:4200/.
 
-## Build
+## Usage
+- Enter a GitHub username in the search bar to retrieve profile and   
+  repository information
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Running Tests
+- Unit tests: ng test
+- End-to-end tests: ng e2e
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## License
+- This project is licensed under the MIT License.

@@ -22,10 +22,12 @@ You can view the live app here: [GitHub User Search Live](https://github-user-re
    git clone https://github.com/chirayu16/github-user-search.git
    cd github-user-search
 2. Install dependencies:
-    npm install
+   ```bash
+   npm install
 3. Run the development server:
+   ```bash
     ng serve
-    Navigate to http://localhost:4200/.
+  Navigate to http://localhost:4200/.
 
 ## Usage
 - Enter a GitHub username in the search bar to retrieve profile and   

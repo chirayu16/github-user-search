@@ -15,35 +15,13 @@ export class GithubService {
       'User-Agent': 'github-user-search'
     });
 
-    const options = {
-      headers: headers
-    };
-
-    return this.http.get<any>(`${this.baseUrl}/${userName}`, options);
+    return this.http.get<any>(`${this.baseUrl}/${userName}`);
   }
 
   getUserRepos(
     username: string,
-    page: number,
-    perPage: number
   ): Observable<any> {
-    const params = {
-      page: page,
-      per_page: perPage,
-    };
-  
-    // Add the User-Agent header
-    const headers = new HttpHeaders({
-      'User-Agent': 'github-user-search',
-    });
-  
-    // Pass the headers in the options object
-    const options = {
-      params: params,
-      headers: headers,
-    };
-  
-    return this.http.get<any>(`${this.baseUrl}/${username}/repos`, options);
+    return this.http.get<any>(`${this.baseUrl}/${username}/repos`);
   }
   
 

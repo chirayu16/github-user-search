@@ -34,7 +34,7 @@ export class ReposComponent implements OnChanges {
   getUserRepos(userName: string, page: number = 1, perPage: number = 20) {
     this.isLoading = true; 
     this.githubService
-      .getUserRepos(userName, page, perPage)
+      .getUserRepos(userName)
       .pipe(
         finalize(() => {
           this.isLoading = false;

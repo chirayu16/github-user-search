@@ -11,9 +11,6 @@ export class GithubService {
   constructor(private http: HttpClient) { }
 
   searchUser(userName: string): Observable<any> {
-    const headers = new HttpHeaders({
-      'User-Agent': 'github-user-search'
-    });
 
     return this.http.get<any>(`${this.baseUrl}/${userName}`);
   }

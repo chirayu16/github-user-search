@@ -1,5 +1,4 @@
 <div *ngIf="repos.length > 0 && !isLoading" class="repos-block">
-  <!-- <span class="ml-4 font-weight-medium repo-header">Repositories</span> -->
   <div class="repo-cards-container">
     <div class="repo-card" *ngFor="let repo of repos" (click)="redirectToRepo(repo.html_url)">
       <mat-card class="example-card">

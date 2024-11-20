@@ -6,7 +6,6 @@ import { reposDetails, userProfileDetails } from '../userProfileDetails';
 import { GithubService } from '../github.service';
 import { CommonModule } from '@angular/common';
 import { finalize } from 'rxjs';
-import { LoadingComponent } from '../loading/loading.component';
 import { LogoComponent } from '../logo/logo.component';
 
 @Component({
@@ -17,7 +16,6 @@ import { LogoComponent } from '../logo/logo.component';
     SearchComponent, 
     ProfileComponent, 
     ReposComponent,
-    LoadingComponent,
     LogoComponent
   ],
   providers: [GithubService],
@@ -26,7 +24,7 @@ import { LogoComponent } from '../logo/logo.component';
 })
 export class HomeComponent {
   user: userProfileDetails | null = null;
-  repos: reposDetails | null = null;
+  repos: reposDetails | null = null;  
   searchQuery: string = '';
   isLoading: boolean = false;
 
@@ -42,7 +40,7 @@ export class HomeComponent {
             this.isLoading = false;
           })
         ).subscribe((response)=> {  //processes the response from API, updating user property with user's details 
-          console.log('response:', response.followers);
+           
           this.user = {
             userName:response.login,
             name:response.name,

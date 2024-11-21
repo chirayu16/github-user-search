@@ -7,7 +7,6 @@ import { LoadingComponent } from '../loading/loading.component';
 import { GithubService } from '../github.service';
 import { FormsModule } from '@angular/forms';
 
-
 @Component({
   selector: 'app-repos',
   standalone: true,
@@ -23,48 +22,48 @@ export class ReposComponent implements OnChanges {
   totalPages: number = 1;
   isLoading: boolean = false;
   hasNextPage: boolean = true;
-  private debounceTimeout : any;
+  private debounceTimeout: any;
 
   constructor(private githubService: GithubService) {}
 
   redirectToRepo(repourl: string) {
     window.open(repourl, '_blank');
-  }  
+  }
 
-  getUserRepos(userName: string, page: number = 1, perPage: number = 20) {
-    this.isLoading = true; 
+  getUserRepos(userName: string, page: number = 1, perPage: number = 10) {
+    this.isLoading = true;
     this.githubService
-      .getUserRepos(userName)
+      .getUserRepos(userName, page, perPage)
       .pipe(
         finalize(() => {
           this.isLoading = false;
         })
       )
-      .subscribe((response) => { //Process each item in the response array
+      .subscribe((response) => {
+        //Process each item in the response array
         this.repos = response.map(({ name, size, html_url }: reposDetails) => ({
           name,
           size,
-          html_url
+          html_url,
         }));
         this.hasNextPage = this.repos.length === perPage;
       });
   }
 
-
   onPrevious() {
     this.pageNumber--;
-    this.getUserRepos(this.userName, this.pageNumber);
+    this.getUserRepos(this.userName, this.pageNumber, 10);
   }
 
   onNext() {
     this.pageNumber++;
-    this.getUserRepos(this.userName, this.pageNumber);
+    this.getUserRepos(this.userName, this.pageNumber, 10);
   }
 
   onPageInput() {
     // Clear any existing timeout to prevent multiple requests
     clearTimeout(this.debounceTimeout);
-    
+
     // Set a delay before loading the page
     this.debounceTimeout = setTimeout(() => {
       this.loadPageWithDelay(this.pageNumber);
@@ -72,7 +71,7 @@ export class ReposComponent implements OnChanges {
   }
 
   loadPageWithDelay(page: number) {
-    this.getUserRepos(this.userName, page);
+    this.getUserRepos(this.userName, page, 10);
   }
 
   ngOnChanges(changes: SimpleChanges): void {

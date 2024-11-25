@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HomeComponent } from './home/home.component';
-import { GithubService } from './github.service';
+import { GithubService } from './services/github.service';
 import { HttpClientModule } from '@angular/common/http';
 
 

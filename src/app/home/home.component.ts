@@ -3,7 +3,7 @@ import { SearchComponent } from '../search/search.component';
 import { ProfileComponent } from '../profile/profile.component';
 import { ReposComponent } from '../repos/repos.component';
 import { reposDetails, userProfileDetails } from '../userProfileDetails';
-import { GithubService } from '../github.service';
+import { GithubService } from '../services/github.service';
 import { CommonModule } from '@angular/common';
 import { finalize } from 'rxjs';
 import { LogoComponent } from '../logo/logo.component';
@@ -27,6 +27,7 @@ export class HomeComponent {
   repos: reposDetails | null = null;  
   searchQuery: string = '';
   isLoading: boolean = false;
+  reposCount: number | null = null;
 
   constructor(private githubService: GithubService) {}
 
@@ -50,6 +51,7 @@ export class HomeComponent {
             followers: response.followers,
             following: response.following,
           };
+          this.reposCount = response.public_repos;
         }
       );
     }

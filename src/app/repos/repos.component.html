@@ -31,7 +31,7 @@
       class="btn-pagination"
       type="button"
       (click)="onNext()"
-      [disabled]="repos.length === 0"
+      [disabled]="repos.length === 0 || !hasNextPage"
     >
       Next
     </button>

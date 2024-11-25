@@ -4,7 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { reposDetails } from '../userProfileDetails';
 import { finalize } from 'rxjs';
 import { LoadingComponent } from '../loading/loading.component';
-import { GithubService } from '../github.service';
+import { GithubService } from '../services/github.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class ReposComponent implements OnChanges {
   @Input() userName: string = '';
+  @Input() reposCount: number | null = null;
 
   repos: reposDetails[] = [];
   pageNumber: number = 1;
@@ -46,7 +47,15 @@ export class ReposComponent implements OnChanges {
           size,
           html_url,
         }));
-        this.hasNextPage = this.repos.length === perPage;
+        const totalRepos = this.reposCount || 0;
+        console.log(totalRepos);
+        this.totalPages = Math.ceil(totalRepos/perPage);
+        console.log(this.totalPages);
+
+
+        this.hasNextPage = page < this.totalPages;
+        console.log(this.hasNextPage);
+
       });
   }
 
@@ -67,7 +76,7 @@ export class ReposComponent implements OnChanges {
     // Set a delay before loading the page
     this.debounceTimeout = setTimeout(() => {
       this.loadPageWithDelay(this.pageNumber);
-    }, 500); // 500ms delay, adjust as needed
+    }, 500); // 500ms delay
   }
 
   loadPageWithDelay(page: number) {

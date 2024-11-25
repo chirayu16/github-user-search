@@ -4,4 +4,4 @@
 </div>
 <app-profile *ngIf="!isLoading" [user]="user"></app-profile>
 <span *ngIf="!!user" class="divider"></span>
-<app-repos [userName]="searchQuery"></app-repos>
+<app-repos [userName]="searchQuery" [reposCount]="reposCount"></app-repos>

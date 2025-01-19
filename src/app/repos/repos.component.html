@@ -24,7 +24,7 @@
     type="number"
     [(ngModel)]="pageNumber"
     (input)="onPageInput()"
-    min="1"
+    [min]="1"
     placeholder="Page"
     /> 
     <button

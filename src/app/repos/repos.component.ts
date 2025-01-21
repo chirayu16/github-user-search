@@ -48,14 +48,8 @@ export class ReposComponent implements OnChanges {
           html_url,
         }));
         const totalRepos = this.reposCount || 0;
-        console.log(totalRepos);
         this.totalPages = Math.ceil(totalRepos/perPage);
-        console.log(this.totalPages);
-
-
         this.hasNextPage = page < this.totalPages;
-        console.log(this.hasNextPage);
-
       });
   }
 
